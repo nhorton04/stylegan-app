@@ -35,13 +35,13 @@ def main():
     parser = argparse.ArgumentParser(description='Find latent representation of reference images using perceptual losses',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        'raw_dir', default='images', help='Directory with raw images for face alignment')
+        'raw_dir', default='raw_images', help='Directory with raw images for face alignment')
     parser.add_argument(
-        'src_dir', default='aligned', help='Directory with images for encoding')
-    parser.add_argument('generated_images_dir', default='generated',
+        'src_dir', default='aligned_images', help='Directory with images for encoding')
+    parser.add_argument('generated_images_dir', default='generated_images',
                         help='Directory for storing generated images')
     parser.add_argument(
-        'dlatent_dir', default='latents', help='Directory for storing dlatent representations')
+        'dlatent_dir', default='latent_representations', help='Directory for storing dlatent representations')
     parser.add_argument('--data_dir', default='data',
                         help='Directory for storing optional models')
     parser.add_argument('--mask_dir', default='masks',
@@ -315,12 +315,12 @@ def encode():
     parser = argparse.ArgumentParser(description='Find latent representation of reference images using perceptual losses',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        'raw_dir', default='images', help='Directory with raw images for face alignment')
+        'raw_dir', default='raw_images', help='Directory with raw images for face alignment')
     parser.add_argument(
-        'src_dir', default='aligned', help='Directory with images for encoding')
-    parser.add_argument('generated_images_dir', default='generated',
+        'src_dir', default='aligned_images', help='Directory with images for encoding')
+    parser.add_argument('generated_images_dir', default='generated_images',
                         help='Directory for storing generated images')
-    parser.add_argument('dlatent_dir', default='latents',
+    parser.add_argument('dlatent_dir', default='latent_representations',
                         help='Directory for storing dlatent representations')
     parser.add_argument('--data_dir', default='data',
                         help='Directory for storing optional models')
@@ -442,8 +442,8 @@ def encode():
     #               for x in os.listdir(args.src_dir)]
     # ref_images = list(filter(os.path.isfile, ref_images))
 
-    ref_images = [os.path.join(os.getcwd()+'/aligned', x)
-                  for x in os.listdir(os.getcwd()+'/aligned')]
+    ref_images = [os.path.join(os.getcwd()+'/aligned_images', x)
+                  for x in os.listdir(os.getcwd()+'/aligned_images')]
     ref_images = list(filter(os.path.isfile, ref_images))
 
     if len(ref_images) == 0:

@@ -26,9 +26,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Align faces from input images', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        'raw_dir', default=os.getcwd()+'/images', help='Directory with raw images for face alignment')
+        'raw_dir', default=os.getcwd()+'/raw_images', help='Directory with raw images for face alignment')
     parser.add_argument(
-        'aligned_dir', default=os.getcwd()+'/aligned', help='Directory for storing aligned images')
+        'aligned_dir', default=os.getcwd()+'/aligned_images', help='Directory for storing aligned images')
     parser.add_argument('--output_size', default=1024,
                         help='The dimension of images for input to the model', type=int)
     parser.add_argument('--x_scale', default=1,
@@ -77,9 +77,9 @@ def align():
     parser = argparse.ArgumentParser(
         description='Align faces from input images', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        'raw_dir', default=os.getcwd()+'/images', help='Directory with raw images for face alignment')
+        'raw_dir', default=os.getcwd()+'/raw_images', help='Directory with raw images for face alignment')
     parser.add_argument(
-        'aligned_dir', default=os.getcwd()+'/aligned', help='Directory for storing aligned images')
+        'aligned_dir', default=os.getcwd()+'/aligned_images', help='Directory for storing aligned images')
     parser.add_argument('--output_size', default=1024,
                         help='The dimension of images for input to the model', type=int)
     parser.add_argument('--x_scale', default=1,
@@ -95,8 +95,8 @@ def align():
 
     landmarks_model_path = unpack_bz2(get_file('shape_predictor_68_face_landmarks.dat.bz2',
                                                LANDMARKS_MODEL_URL, cache_subdir='temp'))
-    ALIGNED_IMAGES_DIR = os.getcwd() + '/aligned'
-    RAW_IMAGES_DIR = os.getcwd() + '/images'
+    ALIGNED_IMAGES_DIR = os.getcwd() + '/aligned_images'
+    RAW_IMAGES_DIR = os.getcwd() + '/raw_images'
 
     landmarks_detector = LandmarksDetector(landmarks_model_path)
     for img_name in os.listdir(RAW_IMAGES_DIR):

@@ -28,7 +28,7 @@ def main():
     if uploaded_file is not None:
         st.image(uploaded_file, width=200)
     else:
-        uploaded_file = os.path.abspath(os.getcwd()) + '/images/Gunny.jpg'
+        uploaded_file = os.path.abspath(os.getcwd()) + '/raw_images/Gunny.jpg'
         st.image(uploaded_file, width=50)
 
     second_upload = st.file_uploader(
@@ -36,13 +36,13 @@ def main():
     if second_upload is not None:
         st.image(second_upload, width=200)
     else:
-        second_upload = os.path.abspath(os.getcwd()) + '/images/me.png'
+        second_upload = os.path.abspath(os.getcwd()) + '/raw_images/me.png'
         st.image(second_upload, width=50)
 
     images = [uploaded_file, second_upload]
 
-    ALIGNED_IMAGES_DIR = os.getcwd() + '/aligned'
-    RAW_IMAGES_DIR = os.getcwd() + '/images'
+    ALIGNED_IMAGES_DIR = os.getcwd() + '/aligned_images'
+    RAW_IMAGES_DIR = os.getcwd() + '/raw_images'
 
     align()
     encode()

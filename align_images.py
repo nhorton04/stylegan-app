@@ -26,9 +26,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Align faces from input images', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        'raw_dir', help='Directory with raw images for face alignment')
+        'raw_dir', default=os.getcwd()+'/images', help='Directory with raw images for face alignment')
     parser.add_argument(
-        'aligned_dir', help='Directory for storing aligned images')
+        'aligned_dir', default=os.getcwd()+'/aligned', help='Directory for storing aligned images')
     parser.add_argument('--output_size', default=1024,
                         help='The dimension of images for input to the model', type=int)
     parser.add_argument('--x_scale', default=1,

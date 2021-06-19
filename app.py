@@ -3,8 +3,10 @@ import os
 import pickle
 import streamlit as st
 import tensorflow as tf
+import argparse
 
-from align_images import unpack_bz2, align, LANDMARKS_MODEL_URL
+from align_images import align
+from encode_images import encode
 from ffhq_dataset.face_alignment import image_align
 # from ffhq_dataset.landmarks_detector import LandmarksDetector, get_landmarks
 from keras.utils import get_file
@@ -43,6 +45,7 @@ def main():
     RAW_IMAGES_DIR = os.getcwd() + '/images'
 
     align()
+    encode()
 
 
 if __name__ == "__main__":

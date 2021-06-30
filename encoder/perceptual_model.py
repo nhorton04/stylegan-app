@@ -141,18 +141,18 @@ class PerceptualModel:
         # Learning rate
         global_step = tf.Variable(
             0, dtype=tf.int32, trainable=False, name="global_step")
-        incremented_global_step = tf.assign_add(global_step, 1)
-        self._reset_global_step = tf.assign(global_step, 0)
-        self.learning_rate = tf.train.exponential_decay(self.lr, incremented_global_step,
-                                                        self.decay_steps, self.decay_rate, staircase=True)
+        incremented_global_step = tf.compat.v1.assign_add(global_step, 1)
+        self._reset_global_step = tf.compat.v1.assign(global_step, 0)
+        self.learning_rate = tf.compat.v1.train.exponential_decay(self.lr, incremented_global_step,
+                                                                  self.decay_steps, self.decay_rate, staircase=True)
         self.sess.run([self._reset_global_step])
 
         if self.discriminator_loss is not None:
             self.discriminator = discriminator
 
         generated_image_tensor = generator.generated_image
-        generated_image = tf.image.resize_nearest_neighbor(generated_image_tensor,
-                                                           (self.img_size, self.img_size), align_corners=True)
+        generated_image = tf.compat.v1.image.resize_nearest_neighbor(generated_image_tensor,
+                                                                     (self.img_size, self.img_size), align_corners=True)
 
         self.ref_img = tf.get_variable('ref_img', shape=generated_image.shape,
                                        dtype='float32', initializer=tf.initializers.zeros())

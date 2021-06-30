@@ -1,0 +1,4 @@
+data/**
+karras2019stylegan-ffhq-1024x1024.pkl
+cache/**
+shape_predictor_68_face_landmarks.dat
